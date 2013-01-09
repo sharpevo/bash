@@ -57,9 +57,12 @@ _vcs_prompt() {
     fi
 }
 
-export PS1="\[\033[1;30m\]\u@\033[1;30m\h>\033[0;36m \W \[\033[0;32m\$(_vcs_prompt) \n\[\033[0m\]> "
+#export PS1="\[\033[1;30m\]\u@\033[1;30m\h>\033[0;36m \W \[\033[0;32m\$(_vcs_prompt) \n\[\033[0m\]> "
+# escape characters that are not displayed '\[' and '\]' around '\e[0m'
+export PS1="\[\e[1;32m\]\u@\h>\[\e[0;36m\] \W \[\e[0;32m\]\$(_vcs_prompt)\n\[\e[0m\]> \[\e[1;36m\]"
 # export PS1="\[\033[1;30m\]\u@\033[1;30m\h>\033[0;36m \W \[\033[1;32m\$(_vcs_prompt) \n\[\033[0m\]> "
 #export PS1="\[${_screen}\033[1;30m\]\u@\033[1;30m\h>\033[0;36m \W \[\033[0;31m\$(_git_prompt) \n\[\033[0m\]> "
+trap 'echo -ne "\e[0m"' DEBUG # different colors for text entry and console output 
 
 export PROMPT_DIRTRIM=3
 # export EDITOR="emacsclient --alternate-editor=\"\" -c"
@@ -114,6 +117,7 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND" # add history after an item execute
 alias H='history | grep'
 alias aria='aria2c -c -s 5 -d ~/tmp'
 alias cp='cp -i'                          # confirm before overwriting something
+alias conf='sh ~/configs/configs'
 alias df='df -h'                          # human-readable sizes
 alias dk='setxkbmap dvorak && xmodmap ~/.Xmodmap'
 alias disc='python2 ~/local/scripts/python/discipline/main.py'
@@ -260,4 +264,4 @@ complete -o default -o nospace -F _git g
 #. ~/local/git-prompt/git-prompt.sh
 
 # automatic transparency if launch a shell in xterm
-[ -n "$XTERM_VERSION" ] && transset-df -a .75 >/dev/null
+[ -n "$XTERM_VERSION" ] && transset-df -a .8 >/dev/null
