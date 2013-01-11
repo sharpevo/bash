@@ -140,9 +140,11 @@ alias ga='git add'
 alias gaa='git add .'
 alias gam='git commit -a -m "'
 alias gt='git status'
+alias gta='sh ~/configs/git_status.sh'
 alias gm='git commit'
 alias gl='git hist'
 alias gll='git histfile'
+alias glf='git ls-files'
 alias gd='git diff'
 alias gdd='git diff --color-words'
 alias gr='git reset'
@@ -264,4 +266,4 @@ complete -o default -o nospace -F _git g
 #. ~/local/git-prompt/git-prompt.sh
 
 # automatic transparency if launch a shell in xterm
-[ -n "$XTERM_VERSION" ] && transset-df -a .8 >/dev/null
+[ -n "$XTERM_VERSION" ] && transset-df -a .85 >/dev/null
