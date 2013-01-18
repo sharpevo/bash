@@ -18,39 +18,21 @@
 #[[ -n "$STY" ]] && _screen='\[\ek\e\\\]\[\ek\W\e\\\]' || _screen=''
 #export PS1="${_screen}\[\033[1;30m\]\u\033[1;31m@\033[1;30m\h-> \033[0;32m\w\n\[\033[0m\]> "
 
-red='\[\e[0;31m\]'
-# loosely based on rson's
-_git_prompt() {
-  if [[ -d .git ]]; then
-    # determine repo/branch; todo: find a better way
-    git_repo="$(git remote -v | tail -n 1 | sed 's|^.*/\(.*\)\.git .*$|\1|g')"
-    git_branch="$(basename "$(git symbolic-ref HEAD 2>/dev/null)")"
-
-    # note changes yet to be committed
-    if git status | grep -Fq 'nothing to commit, working directory clean'; then
-      git_status=''
-    else
-      git_status='*'
-    fi
-
-#     echo "-> git/${git_repo}:${git_branch}${git_status}"
-    echo "[${git_repo}${git_branch}]${git_status}"
-  fi
-}
-_hg_prompt() {
-    if [[ -d .hg ]]; then
-        hg prompt "[{branch}{({bookmark})}]{status}" 2> /dev/null
-    fi
-}
-
 _vcs_prompt() {
-    export vcs_cmd='2'
     if [ -d .git ]; then
-        git_branch="$(git symbolic-ref HEAD 2> /dev/null | cut -b 12-)"
-        if git status | grep -Fq 'nothing to commit, working directory clean'; then
-            git_status=''
+        #git_branch="$(git symbolic-ref HEAD 2> /dev/null | cut -b 12-)"
+        git_branch="$(basename "$(git symbolic-ref HEAD 2>/dev/null)")"
+        # check index with disk, 1:dirty
+        if git diff-files --quiet; then
+            
+            # check index with tree, 1:dirty
+            if git diff-index --quiet --cached HEAD; then
+                git_status=""
+            else
+                git_status="+"
+            fi
         else
-            git_status='*'
+            git_status="*"
         fi
 
         echo -n "[${git_repo}${git_branch}]${git_status}"
