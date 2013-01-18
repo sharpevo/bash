@@ -68,7 +68,7 @@ export PROMPT_DIRTRIM=3
 # export EDITOR="emacsclient --alternate-editor=\"\" -c"
 export EDITOR="vim"
 export VISUAL="vim"
-export TERM="screen-256color"
+export TERM="xterm-256color"
 export SCREEN_CONF_DIR="/home/ryan/.screen"
 export SCREEN_CONF="main"
 
