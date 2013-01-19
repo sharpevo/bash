@@ -50,7 +50,7 @@ export PROMPT_DIRTRIM=3
 # export EDITOR="emacsclient --alternate-editor=\"\" -c"
 export EDITOR="vim"
 export VISUAL="vim"
-export TERM="xterm-256color"
+export TERM="screen-256color"
 export SCREEN_CONF_DIR="/home/ryan/.screen"
 export SCREEN_CONF="main"
 
@@ -121,7 +121,7 @@ alias hr='hg revert'
 alias ga='git add -f'
 alias gaa='git add .'
 alias gam='git commit -a -m "'
-alias gt='git status --short'
+alias gt='git status -sb'
 alias gta='sh ~/configs/git_status.sh'
 alias gm='git commit -v'
 alias gl='git hist'
@@ -135,6 +135,7 @@ alias gk='git checkout'
 alias isilo='wine /media/Archives/Program\ Files/iSilo/iSilo/iSilo.exe'
 alias ll='ls -l --group-directories-first --time-style=+"%d/%m/%Y %H:%M" --color=auto -ohF'alias grep='grep --color=tty -d skip'
 alias ls='ls --group-directories-first --time-style=+"%d/%m/%Y %H:%M" --color=auto -F'
+alias man='TERM="xterm-256color" man'
 alias mdict='wine /media/Archives/Program\ Files/MDictPC/MDict.exe'
 alias mirror='wget -r -p -np -k -E -w 2 --random-wait'
 alias mnt='sudo mount -o iocharset=utf8,uid=ryan'
