@@ -22,6 +22,7 @@ _vcs_prompt() {
 export PS1="\[\e[1;32m\]\u@\h>\[\e[0;36m\] \W \[\e[0;32m\]\$(_vcs_prompt)\n\[\e[0m\]> \[\e[1;36m\]"
 trap 'echo -ne "\e[0m"' DEBUG # different colors for text entry and console output 
 source /usr/share/git/completion/git-completion.bash
+complete -o default -o nospace -F _git g # completion with 'g' if alias g as git
 
 export PROMPT_DIRTRIM=3
 export EDITOR="vim"
@@ -76,20 +77,8 @@ alias hl='hg lga'
 alias hd='hg diff'
 alias hu='hg update'
 alias hr='hg revert'
-alias ga='git add -f'
-alias gaa='git add .'
-alias gam='git commit -a -m "'
-alias gt='git status -sb'
+alias g='git'
 alias gta='sh ~/configs/git_status.sh'
-alias gm='git commit -v'
-alias gl='git hist'
-alias gll='git histfile'
-alias glf='git ls-files'
-alias gd='git diff'
-alias gdd='git diff --color-words'
-alias gf='git ls-files'
-alias gr='git reset'
-alias gk='git checkout'
 alias isilo='wine /media/Archives/Program\ Files/iSilo/iSilo/iSilo.exe'
 alias ll='ls -l --group-directories-first --time-style=+"%d/%m/%Y %H:%M" --color=auto -ohF'
 alias grep='grep --color=tty -d skip'
