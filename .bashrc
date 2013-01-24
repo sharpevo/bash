@@ -5,7 +5,7 @@
 
 _vcs_prompt() {
     if [ -d .git ]; then
-        git_branch="$(basename "$(git symbolic-ref HEAD 2>/dev/null)")"
+        git_branch=$(git rev-parse --abbrev-ref HEAD)
         if git diff-files --quiet; then
             if git diff-index --quiet --cached HEAD; then
                 git_status=""
