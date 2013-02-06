@@ -80,7 +80,6 @@ alias mountFTPHD='sudo curlftpfs 192.168.161.10 /media/ftp/ -o codepage=gbk,allo
 alias mt='mutt -F ~/.mutt/.muttrc'
 alias mv='mv -i'
 alias nlc='python2 /home/ryan/local/scripts/python/nlc/nlc_daemon.py'
-alias rm='rm -vi'
 alias rss='python2 ~/local/scripts/kindle/fetch_rss/fetch_rss.py'
 alias rst='sudo shutdown -r now'
 alias shd='sudo shutdown -h now'
