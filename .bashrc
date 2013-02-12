@@ -66,6 +66,7 @@ alias conf='sh ~/configs/configs'
 alias df='df -h' # human-readable sizes
 alias dk='setxkbmap dvorak && xmodmap ~/.Xmodmap'
 alias duinfo='du -hm -d 1 | sort -nr'
+alias disc='python2 ~/local/scripts/python/discipline/main.py'
 alias g='git'
 alias gta='sh ~/configs/git_status.sh'
 alias ll='ls -al --group-directories-first --time-style=+"%d/%m/%Y %H:%M" --color=auto -ohF'
