@@ -63,6 +63,7 @@ alias ..='cd ..'
 alias aria='aria2c -c -s 5 -d ~/tmp'
 alias cp='cp -i' # confirm before overwriting something
 alias conf='sh ~/configs/configs'
+alias ct='sh ~/local/scripts/night_vision/night_vision.sh'
 alias df='df -h' # human-readable sizes
 alias dk='setxkbmap dvorak && xmodmap ~/.Xmodmap'
 alias duinfo='du -hm -d 1 | sort -nr'
@@ -93,7 +94,6 @@ alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING)=\"NA
 alias play='mplayer -include /home/ryan/.mplayer/config.mv -xy 500 -shuffle -loop 0 -fixed-vo'
 alias pep8='pep8-python2 --show-source --max-line-length=87'
 alias tracver='sudo python2 /home/ryan/local/scripts/python/trac/delete_page_version.py'
-alias sc='sh ~/local/scripts/screen_color.sh'
 
 
 
