@@ -158,4 +158,3 @@ ex (){
   fi
 }
 
-[ -n "$XTERM_VERSION" ] && transset-df -a .85 >/dev/null # autotrans if launched in xterm 
