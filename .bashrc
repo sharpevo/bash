@@ -157,3 +157,10 @@ ex (){
   fi
 }
 
+t(){
+    if [ `pwd` != $HOME -a -e ".taskrc" ];then
+        task rc.data.location:.task $@
+    else
+        task $@
+    fi
+}
