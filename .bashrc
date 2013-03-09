@@ -159,7 +159,7 @@ ex (){
 
 t(){
     if [ `pwd` != $HOME -a -d ".task" ];then
-        task rc.data.location:.task rc.verbose=off $@
+        task rc:~/configs/taskwarrior/.taskrc.git $@
     else
         task $@
     fi
