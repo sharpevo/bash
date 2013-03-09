@@ -159,7 +159,7 @@ ex (){
 
 t(){
     if [ `pwd` != $HOME -a -e ".taskrc" ];then
-        task rc.data.location:.task $@
+        task rc.data.location:.task rc.verbose=off $@
     else
         task $@
     fi
