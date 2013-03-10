@@ -85,7 +85,6 @@ alias nlc='python2 /home/ryan/local/scripts/python/nlc/nlc_daemon.py'
 alias rss='python2 ~/local/scripts/kindle/fetch_rss/fetch_rss.py'
 alias rst='sudo shutdown -r now'
 alias shd='sudo shutdown -h now'
-alias t='task'
 alias tm='sh ~/local/scripts/tmux_dev.sh'
 alias tl='tmux list-sessions'
 alias tk='tmux kill-session -t'
@@ -158,3 +157,10 @@ ex (){
   fi
 }
 
+t(){
+    if [ `pwd` != $HOME -a -d ".task" ];then
+        task rc:~/configs/taskwarrior/.taskrc.git $@
+    else
+        task $@
+    fi
+}
