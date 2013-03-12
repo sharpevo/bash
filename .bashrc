@@ -5,17 +5,21 @@
 
 _vcs_prompt() {
     if [ -d .git ]; then
-        git_branch=$(git rev-parse --abbrev-ref HEAD)
-        if git diff-files --quiet; then
-            if git diff-index --quiet --cached HEAD; then
-                git_status=""
+        if git rev-parse --quiet --verify --no-revs HEAD; then
+            git_branch=$(git rev-parse --abbrev-ref HEAD)
+            if git diff-files --quiet; then
+                if git diff-index --quiet --cached HEAD; then
+                    git_status=""
+                else
+                    git_status="+"
+                fi
             else
-                git_status="+"
+                git_status="*"
             fi
+            echo -n "[${git_branch}]${git_status}"
         else
-            git_status="*"
+            echo -n "[init]"
         fi
-        echo -n "[${git_branch}]${git_status}"
     fi
 }
 
