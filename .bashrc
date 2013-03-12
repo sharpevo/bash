@@ -15,7 +15,7 @@ _vcs_prompt() {
         else
             git_status="*"
         fi
-        echo -n "[${git_repo}${git_branch}]${git_status}"
+        echo -n "[${git_branch}]${git_status}"
     fi
 }
 
