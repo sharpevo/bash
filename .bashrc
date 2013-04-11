@@ -1,6 +1,11 @@
 
 
 
+# Conditions
+
+is_root=false
+[[ $UID -eq 0 ]] && is_root=true
+
 # System Variables
 
 _vcs_prompt() {
