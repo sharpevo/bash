@@ -70,16 +70,13 @@ PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 #  Alias
 
 alias ..='cd ..'
-alias aria='aria2c -c -s 5 -d ~/tmp'
+alias aria='aria2c -c -s 5 -d /tmp'
 alias cp='cp -i' # confirm before overwriting something
-alias conf='sh ~/configs/configs'
-alias ct='sh ~/local/scripts/night_vision/night_vision.sh'
+alias ct='sh /home/ryan/local/scripts/night_vision/night_vision.sh'
 alias df='df -h' # human-readable sizes
-alias dk='setxkbmap dvorak && xmodmap ~/.Xmodmap'
+alias dk='setxkbmap dvorak && xmodmap /home/ryan/.Xmodmap'
 alias duinfo='du -hm -d 1 | sort -nr'
-alias disc='python2 ~/local/scripts/python/discipline/main.py'
 alias g='git'
-alias gta='sh ~/configs/git_status.sh'
 alias ll='ls -al --group-directories-first --time-style=+"%d/%m/%Y %H:%M" --color=never -ohF'
 alias grep='grep --color=tty -d skip'
 alias ls='ls --group-directories-first --time-style=+"%d/%m/%Y %H:%M" --color=auto -F'
@@ -89,14 +86,12 @@ alias mnt='sudo mount -o iocharset=utf8,uid=ryan'
 alias mountU='mnt /dev/sdb1 /media/usb'
 alias mountFTP='sudo curlftpfs -o codepage=gbk -o allow_other 192.168.1.70 /media/ftp/'
 alias mountFTPHD='sudo curlftpfs 192.168.161.10 /media/ftp/ -o codepage=gbk,allow_other'
-alias mt='mutt -F ~/.mutt/.muttrc'
 alias mv='mv -i'
 alias nlc='python2 /home/ryan/local/scripts/python/nlc/nlc_daemon.py'
-alias rss='python2 ~/local/scripts/kindle/fetch_rss/fetch_rss.py'
 alias rst='sudo shutdown -r now'
 alias shd='sudo shutdown -h now'
 alias t='task'
-alias tm='sh ~/local/scripts/tmux_dev.sh'
+alias tm='sh /home/ryan/local/scripts/tmux_dev.sh'
 alias tl='tmux list-sessions'
 alias tk='tmux kill-session -t'
 alias umountU='sudo umount /media/usb'
@@ -105,7 +100,13 @@ alias play='mplayer -include /home/ryan/.mplayer/config.mv -xy 500 -shuffle -loo
 alias pep8='pep8-python2 --show-source --max-line-length=87'
 alias tracver='sudo python2 /home/ryan/local/scripts/python/trac/delete_page_version.py'
 
-
+if ! $is_root;then
+    alias conf='sh ~/configs/configs'
+    alias disc='python2 ~/local/scripts/python/discipline/main.py'
+    alias gta='sh ~/configs/git_status.sh'
+    alias mt='mutt -F ~/.mutt/.muttrc'
+    alias rss='python2 ~/local/scripts/kindle/fetch_rss/fetch_rss.py'
+fi
 
 #  Functions
 
