@@ -28,7 +28,8 @@ _vcs_prompt() {
     fi
 }
 
-export PS1="\[\e[1;32m\]\u@\h>\[\e[0;36m\] \W \[\e[0;32m\]\$(_vcs_prompt)\n\[\e[0m\]> \[\e[1;36m\]"
+$is_root && user_color="\[\e[31m\]" || user_color="\[\e[1;32m\]"
+export PS1="$user_color\u@\h>\[\e[0;36m\] \W \[\e[0;32m\]\$(_vcs_prompt)\n\[\e[0m\]> \[\e[1;36m\]"
 trap 'echo -ne "\e[0m"' DEBUG # different colors for text entry and console output 
 source /usr/share/git/completion/git-completion.bash
 complete -o default -o nospace -F _git g # completion with 'g' if alias g as git
