@@ -96,7 +96,7 @@ alias tracver='sudo python2 /mnt/linux/home/ryan/local/scripts/python/trac/delet
 
 if ! $is_root;then
     alias conf='sh ~/configs/configs'
-    alias disc='python2 ~/local/scripts/python/discipline/main.py'
+    alias disc='python2 /mnt/linux/home/ryan/local/scripts/python/discipline/main.py'
     alias gta='sh ~/configs/git_status.sh'
     alias mt='mutt -F ~/.mutt/.muttrc'
     alias rss='python2 ~/local/scripts/kindle/fetch_rss/fetch_rss.py'
