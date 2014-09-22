@@ -118,23 +118,6 @@ rnr() {
     fi
 }
 
-vue () {
-    cd /media/Archives/vue;
-    java -jar VUE.jar;
-}
-
-wlanon(){
-    sudo ifconfig wlan0 up
-    sudo wpa_supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant.conf
-    sleep 5 && sudo dhcpcd wlan0
-}
-
-wlanoff() {
-    sudo dhcpcd -k wlan0;
-    sudo killall wpa_supplicant;
-}
-
-
 cl() {
     cd "$1";
     ll;
