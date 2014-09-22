@@ -92,7 +92,7 @@ alias tk='tmux kill-session -t'
 alias umountU='sudo umount /mnt/usb'
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING)=\"NAME\",\"CLASS\""'
 alias pep8='pep8-python2 --show-source --max-line-length=87'
-alias tracver='sudo python2 /home/ryan/local/scripts/python/trac/delete_page_version.py'
+alias tracver='sudo python2 /mnt/linux/home/ryan/local/scripts/python/trac/delete_page_version.py'
 
 if ! $is_root;then
     alias conf='sh ~/configs/configs'
