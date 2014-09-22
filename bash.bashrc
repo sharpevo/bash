@@ -41,7 +41,6 @@ export TERM="screen-256color"
 
 complete -cf sudo
 # User friendly completion
-#bind '"\t":menu-complete-backward'
 bind '"\C-j": menu-complete'
 #bind '"\C-k": menu-complete-backward'
 set completion-ignore-case on
@@ -73,7 +72,7 @@ alias cp2='sudo rsync -trh --progress'
 alias mv2='sudo rsync -trh --progress --remove-source-files'
 alias ct='sh /home/yang/dev/night_vision/night_vision.sh'
 alias df='df -h' # human-readable sizes
-alias dk='setxkbmap dvorak && xmodmap /home/ryan/.Xmodmap'
+alias dk='setxkbmap dvorak && xmodmap /home/yang/.Xmodmap'
 alias duinfo='du -hm -d 1 | sort -nr'
 alias g='git'
 alias ll='ls -al --group-directories-first --time-style=+"%d/%m/%Y %H:%M" --color=never -ohF'
@@ -86,24 +85,19 @@ alias mountU='mnt /dev/sdb1 /mnt/usb'
 alias mountFTP='sudo curlftpfs -o codepage=gbk -o allow_other 192.168.1.70 /mnt/ftp/'
 alias mountFTPHD='sudo curlftpfs 192.168.161.10 /mnt/ftp/ -o codepage=gbk,allow_other'
 alias mv='mv -i'
-alias nlc='python2 /home/ryan/local/scripts/python/nlc/nlc_daemon.py'
-alias rst='sudo shutdown -r now'
-alias shd='sudo shutdown -h now'
-alias t='task'
+alias nlc='python2 /mnt/linux/home/ryan/local/scripts/python/nlc/nlc_daemon.py'
 alias tm='sh /etc/tmux_dev.sh'
 alias tl='tmux list-sessions'
 alias tk='tmux kill-session -t'
 alias umountU='sudo umount /mnt/usb'
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING)=\"NAME\",\"CLASS\""'
 alias pep8='pep8-python2 --show-source --max-line-length=87'
-alias tracver='sudo python2 /home/ryan/local/scripts/python/trac/delete_page_version.py'
+alias tracver='sudo python2 /mnt/linux/home/ryan/local/scripts/python/trac/delete_page_version.py'
 
 if ! $is_root;then
     alias conf='sh ~/configs/configs'
-    alias disc='python2 ~/local/scripts/python/discipline/main.py'
-    alias gta='sh ~/configs/git_status.sh'
-    alias mt='mutt -F ~/.mutt/.muttrc'
-    alias rss='python2 ~/local/scripts/kindle/fetch_rss/fetch_rss.py'
+    alias disc='python2 /mnt/linux/home/ryan/local/scripts/python/discipline/main.py'
+    alias gta='sh ~/dev/configs/git_status.sh'
 fi
 
 #  Functions
@@ -123,23 +117,6 @@ rnr() {
         echo "usage: rnr { tA/M | xV/L | rL/R }"
     fi
 }
-
-vue () {
-    cd /media/Archives/vue;
-    java -jar VUE.jar;
-}
-
-wlanon(){
-    sudo ifconfig wlan0 up
-    sudo wpa_supplicant -B -D wext -i wlan0 -c /etc/wpa_supplicant.conf
-    sleep 5 && sudo dhcpcd wlan0
-}
-
-wlanoff() {
-    sudo dhcpcd -k wlan0;
-    sudo killall wpa_supplicant;
-}
-
 
 cl() {
     cd "$1";
