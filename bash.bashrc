@@ -41,7 +41,6 @@ export TERM="screen-256color"
 
 complete -cf sudo
 # User friendly completion
-#bind '"\t":menu-complete-backward'
 bind '"\C-j": menu-complete'
 #bind '"\C-k": menu-complete-backward'
 set completion-ignore-case on
