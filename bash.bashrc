@@ -98,7 +98,6 @@ if ! $is_root;then
     alias conf='sh ~/configs/configs'
     alias disc='python2 /mnt/linux/home/ryan/local/scripts/python/discipline/main.py'
     alias gta='sh ~/configs/git_status.sh'
-    alias mt='mutt -F ~/.mutt/.muttrc'
 fi
 
 #  Functions
