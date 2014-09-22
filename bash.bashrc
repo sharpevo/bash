@@ -95,7 +95,7 @@ alias pep8='pep8-python2 --show-source --max-line-length=87'
 alias tracver='sudo python2 /mnt/linux/home/ryan/local/scripts/python/trac/delete_page_version.py'
 
 if ! $is_root;then
-    alias conf='sh ~/configs/configs'
+    alias conf='sh ~/dev/configs/configs'
     alias disc='python2 /mnt/linux/home/ryan/local/scripts/python/discipline/main.py'
     alias gta='sh ~/dev/configs/git_status.sh'
 fi
