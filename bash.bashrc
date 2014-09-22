@@ -36,10 +36,15 @@ complete -o default -o nospace -F _git g # completion with 'g' if alias g as git
 
 export PROMPT_DIRTRIM=3
 export EDITOR="vim"
-export VISUAL="vim"
+export VISUAL="/usr/bin/vim -p -X"
 export TERM="screen-256color"
 
 complete -cf sudo
+# User friendly completion
+#bind '"\t":menu-complete-backward'
+bind '"\C-j": menu-complete'
+#bind '"\C-k": menu-complete-backward'
+set completion-ignore-case on
 
 shopt -s cdspell
 shopt -s checkwinsize
@@ -50,12 +55,6 @@ shopt -s extglob
 shopt -s hostcomplete
 shopt -s nocaseglob
 
-#  Input Method
-export GTK_IM_MODULE=ibus
-export XMODIFIERS="@im=ibus"
-export QT_IM_MODULE=ibus
-export XIM=ibus
-export LC_CTYPE=zh_CN.UTF-8 # for emacs
 
 #  History
 export HISTCONTROL=ignoredups # ignore duplicates items
@@ -66,13 +65,13 @@ shopt -s histappend  # append history not overwrite
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"    
 
 
-
 #  Alias
 
 alias ..='cd ..'
 alias aria='aria2c -c -s 5 -d /tmp'
-alias cp='cp -i' # confirm before overwriting something
-alias ct='sh /home/ryan/local/scripts/night_vision/night_vision.sh'
+alias cp2='sudo rsync -trh --progress'
+alias mv2='sudo rsync -trh --progress --remove-source-files'
+alias ct='sh /home/yang/dev/night_vision/night_vision.sh'
 alias df='df -h' # human-readable sizes
 alias dk='setxkbmap dvorak && xmodmap /home/ryan/.Xmodmap'
 alias duinfo='du -hm -d 1 | sort -nr'
@@ -82,21 +81,20 @@ alias grep='grep --color=tty -d skip'
 alias ls='ls --group-directories-first --time-style=+"%d/%m/%Y %H:%M" --color=auto -F'
 alias man='TERM="xterm-256color" man'
 alias mirror='wget -r -p -np -k -E -w 2 --random-wait'
-alias mnt='sudo mount -o iocharset=utf8,uid=ryan'
-alias mountU='mnt /dev/sdb1 /media/usb'
-alias mountFTP='sudo curlftpfs -o codepage=gbk -o allow_other 192.168.1.70 /media/ftp/'
-alias mountFTPHD='sudo curlftpfs 192.168.161.10 /media/ftp/ -o codepage=gbk,allow_other'
+alias mnt='sudo mount -o iocharset=utf8,uid=yang'
+alias mountU='mnt /dev/sdb1 /mnt/usb'
+alias mountFTP='sudo curlftpfs -o codepage=gbk -o allow_other 192.168.1.70 /mnt/ftp/'
+alias mountFTPHD='sudo curlftpfs 192.168.161.10 /mnt/ftp/ -o codepage=gbk,allow_other'
 alias mv='mv -i'
 alias nlc='python2 /home/ryan/local/scripts/python/nlc/nlc_daemon.py'
 alias rst='sudo shutdown -r now'
 alias shd='sudo shutdown -h now'
 alias t='task'
-alias tm='sh /home/ryan/local/scripts/tmux_dev.sh'
+alias tm='sh /etc/tmux_dev.sh'
 alias tl='tmux list-sessions'
 alias tk='tmux kill-session -t'
-alias umountU='sudo umount /media/usb'
+alias umountU='sudo umount /mnt/usb'
 alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING)=\"NAME\",\"CLASS\""'
-alias play='mplayer -include /home/ryan/.mplayer/config.mv -xy 500 -shuffle -loop 0 -fixed-vo'
 alias pep8='pep8-python2 --show-source --max-line-length=87'
 alias tracver='sudo python2 /home/ryan/local/scripts/python/trac/delete_page_version.py'
 
@@ -169,3 +167,32 @@ ex (){
   fi
 }
 
+
+
+# Shortcut function for directories
+
+export MARKPATH=$HOME/.cache/.marks
+
+jump() {
+    cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+}
+
+mark() {
+    mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+
+unmark() {
+    rm -i "$MARKPATH/$1"
+}
+
+marks() {
+    ls -l "$MARKPATH" | sed 's/  / /g' | cut -d' ' -f8- | sed 's/ -/\t-/g' && echo
+}
+
+_completemarks() {
+    local curw=${COMP_WORDS[COMP_CWORD]}
+    local wordlist=$(find $MARKPATH -type l -printf "%f\n")
+    COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+    return 0
+}
+complete -F _completemarks jump unmark
