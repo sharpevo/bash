@@ -72,7 +72,7 @@ alias cp2='sudo rsync -trh --progress'
 alias mv2='sudo rsync -trh --progress --remove-source-files'
 alias ct='sh /home/yang/dev/night_vision/night_vision.sh'
 alias df='df -h' # human-readable sizes
-alias dk='setxkbmap dvorak && xmodmap /home/ryan/.Xmodmap'
+alias dk='setxkbmap dvorak && xmodmap /home/yang/.Xmodmap'
 alias duinfo='du -hm -d 1 | sort -nr'
 alias g='git'
 alias ll='ls -al --group-directories-first --time-style=+"%d/%m/%Y %H:%M" --color=never -ohF'
