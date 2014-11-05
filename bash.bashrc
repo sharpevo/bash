@@ -144,7 +144,17 @@ ex (){
   fi
 }
 
-
+stream() {
+    if [ -n $1 ]; then
+        case $1 in
+            0) mplayer mms://live.hitfm.cn/fm887.wsx ;;
+            1) mplayer -loop 0 mms://new.pllc.cn/video ;;
+            2) mplayer rtsp://60.29.105.163/live9 ;;
+            3) livestreamer twitch.tv/itshafu low ;; 
+        esac
+    fi
+    echo -e "0: Hitfm\n1: Buddhism\n2: Crosstalk\n3: Hafu"
+}
 
 # Shortcut function for directories
 
