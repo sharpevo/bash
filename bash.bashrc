@@ -144,12 +144,12 @@ ex (){
   fi
 }
 
-stream() {
+strm() {
     if [ -n $1 ]; then
         case $1 in
-            0) mplayer mms://live.hitfm.cn/fm887.wsx ;;
+            0) mplayer -loop 0 mms://live.hitfm.cn/fm887.wsx ;;
             1) mplayer -loop 0 mms://new.pllc.cn/video ;;
-            2) mplayer rtsp://60.29.105.163/live9 ;;
+            2) mplayer -loop 0 rtsp://60.29.105.163/live9 ;;
             3) livestreamer twitch.tv/itshafu low ;; 
         esac
     fi
