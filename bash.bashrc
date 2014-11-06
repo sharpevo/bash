@@ -144,7 +144,7 @@ ex (){
   fi
 }
 
-stream() {
+strm() {
     if [ -n $1 ]; then
         case $1 in
             0) mplayer -loop 0 mms://live.hitfm.cn/fm887.wsx ;;
