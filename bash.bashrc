@@ -156,6 +156,23 @@ strm() {
     echo -e "0: Hitfm\n1: Buddhism\n2: Crosstalk\n3: Hafu"
 }
 
+split2flacs() {
+    if [[ -f "$1" ]]; then
+        echo "==Convert encoding..."
+        iconv -f gbk -t utf8 *.cue > converted.cue
+        echo "==Split file and convert to flacs..."
+        shntool split -f converted.cue -t "%n.%t" -o flac $1
+        echo "==Rename the original file..."
+        mv $1 ${1}.ori
+        echo "==Write info to flacs..."
+		cuetag.sh converted.cue *.flac
+		echo "==Restore the original file..."
+		mv ${1}.ori $1
+	else
+	    echo "Usage: split2flacs *.ape/*.flac"
+	fi
+}
+
 # Shortcut function for directories
 
 export MARKPATH=$HOME/.cache/.marks
